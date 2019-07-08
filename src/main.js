@@ -1,5 +1,28 @@
 const First = {
-  template: '<div>First</div>'
+  template: `<div>
+               First
+               <input @keyup.enter="addItem" type=text/>
+               <ul>
+                 <li v-for="item in lists" :key="item.id">{{ item.val }}</li>
+               </ul>
+            </div>`,
+  data: function(){
+    return {
+      lists: []
+    }
+  },
+  created(){
+    console.log('created: First')
+  },
+  methods: {
+    addItem(e){
+      console.log('addItem: First')
+      this.lists.push({
+        val: e.target.value,
+        id: (new Date()).getTime()
+      })
+    }
+  }
 }
 const Second = {
   template: '<div>Second</div>'
