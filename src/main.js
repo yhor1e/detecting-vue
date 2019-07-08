@@ -1,13 +1,13 @@
 const First = {
-  template: '<div>foo</div>'
+  template: '<div>First</div>'
 }
 const Second = {
-  template: '<div>bar</div>'
+  template: '<div>Second</div>'
 }
 
 const routes = [
-  { path: '/foo', component: First },
-  { path: '/bar', component: Second }
+  { path: '/first', component: First },
+  { path: '/second', component: Second }
 ]
 
 const router = new VueRouter({
