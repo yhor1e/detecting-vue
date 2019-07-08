@@ -1,6 +1,6 @@
 const First = {
   template: `<div>
-               First
+               <h1>First</h1>
                <input @keyup.enter="addItem" type=text/>
                <ul>
                  <li v-for="item in lists" :key="item.id">{{ item.val }}</li>
@@ -25,7 +25,9 @@ const First = {
   }
 }
 const Second = {
-  template: '<div>Second</div>'
+  template: `<div>
+               <h1>Second</h1>
+            </div>`
 }
 
 const routes = [
