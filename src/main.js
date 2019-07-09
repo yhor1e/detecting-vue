@@ -2,7 +2,7 @@ const First = {
   template: `<div>
                <h1>First</h1>
                <button @click="reset">reset</button>
-               <input @keyup.up="addItem" type=text/>
+               <input @keyup.enter="addItem" type=text/>
                <ul>
                  <li v-for="item in lists" :key="item.id">{{ item.val }}</li>
                </ul>
@@ -13,7 +13,7 @@ const First = {
     }
   },
   created(){
-    this.lists = JSON.parse(localStorage.getItem('lists'))
+    this.lists = localStorage.getItem('lists') == null ? [] : JSON.parse(localStorage.getItem('lists'))
   },
   methods: {
     addItem(e){
