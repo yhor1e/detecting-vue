@@ -1,5 +1,6 @@
 const First = {
   template: `<div>
+               <button @click="$emit('change', 'second')">Go to Second</button>
                <h1>First</h1>
                <button @click="reset">reset</button>
                <input @keyup.enter="addItem" type=text/>
@@ -10,40 +11,41 @@ const First = {
   data: function(){
     return {
       lists: []
-    }
+    };
   },
   created(){
-    this.lists = localStorage.getItem('lists') == null ? [] : JSON.parse(localStorage.getItem('lists'))
+    this.lists = localStorage.getItem('lists') == null ? [] : JSON.parse(localStorage.getItem('lists'));
   },
   methods: {
     addItem(e){
       this.lists.push({
         val: e.target.value,
         id: (new Date()).getTime()
-      })
-      localStorage.setItem('lists', JSON.stringify(this.lists))
+      });
+      localStorage.setItem('lists', JSON.stringify(this.lists));
     },
     reset() {
       this.lists = [];
-      localStorage.setItem('lists', JSON.stringify(this.lists))
+      localStorage.setItem('lists', JSON.stringify(this.lists));
     }
   }
-}
+};
 const Second = {
   template: `<div>
+               <button @click="$emit('change', 'first')">Go to First</button>
                <h1>Second</h1>
             </div>`
-}
+};
 
-const routes = [
-  { path: '/first', component: First },
-  { path: '/second', component: Second }
-]
-
-const router = new VueRouter({
-  routes
-})
-
+Vue.component('first', First);
+Vue.component('second', Second);
 const app = new Vue({
-  router
-}).$mount('#app')
+  data: {
+    target: 'first'
+  },
+  methods: {
+    onChange(target) {
+      this.target = target;
+    }
+  }
+}).$mount('#app');

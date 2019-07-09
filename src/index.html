@@ -9,14 +9,9 @@
   </head>
   <body>
     <div id="app">
-      <p>
-        <router-link to="/first">Go to First</router-link>
-        <router-link to="/Second">Go to Second</router-link>
-      </p>
-      <router-view></router-view>
+      <component :is="target" @change="onChange"></component>
     </div>
     <script src="../node_modules/vue/dist/vue.js"></script>
-    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
