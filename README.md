@@ -1,1 +1,1 @@
-# detecting-vue
+# simple-sample-vue
